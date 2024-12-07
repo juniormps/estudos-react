@@ -13,6 +13,18 @@ const Events = () => {
         <div>
             <button onClick={handleMyEvent}>Clique Aqui!</button>
         </div>
+        <div>
+            <button onClick={() => console.log("Clicou!")}>Clique aqui também!</button>
+            <button
+                onClick={() => {
+                    if (true) {
+                        console.log("ISTO NÃO DEVE SER FEITO, POIS NÃO OBEDECE UMA BOA PRÁTICA!")
+                    }
+                }}
+            >
+                Terceiro Botão
+            </button>
+        </div>
     </>
   )
 }
