@@ -1,5 +1,7 @@
 //Criando o primeiro componente
 
+import MyComponent from "./MyComponent"
+
 const FirstComponent = () => {
     //Aqui comenta assim
 
@@ -15,6 +17,7 @@ const FirstComponent = () => {
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam est, animi maiores autem architecto aperiam fugiat dolorum vitae eius non officia sit, labore ad quas! Assumenda autem rem harum expedita?
             </p>
+            <MyComponent/>
         </>
         
     )
