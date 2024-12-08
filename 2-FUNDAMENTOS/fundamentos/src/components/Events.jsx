@@ -4,10 +4,21 @@ import React from 'react'
 
 const Events = () => {
 
+    //Esta é uma função de evento
     const handleMyEvent= (e) => {
         console.log("Ativou o evento!")
         console.log(e)
     }
+
+    //Esta é uma função de renderização
+    const renderSomething = (x) => {
+        if (x) {
+            return <h3>Renderizando isso!</h3>
+        } else {
+            return <h3>Também posso renderizar isso!</h3>
+        }
+    }
+
   return (
     <>
         <div>
@@ -24,6 +35,10 @@ const Events = () => {
             >
                 Terceiro Botão
             </button>
+        </div>
+        <div>
+            {renderSomething(true)}
+            {renderSomething(false)}
         </div>
     </>
   )
