@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import ManageData from './components/ManageData'
+import ListRender from './components/ListRender'
+import ConditionalRender from './components/ConditionalRender'
 
 import './App.css'
 
 import City from "./assets/city.jpg"
-import ListRender from './components/ListRender'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +23,7 @@ function App() {
       </div>
       <ManageData/>
       <ListRender/>
+      <ConditionalRender/>
     </>
   )
 }
