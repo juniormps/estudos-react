@@ -3,12 +3,13 @@ import ManageData from './components/ManageData'
 import ListRender from './components/ListRender'
 import ConditionalRender from './components/ConditionalRender'
 import ShowUserName from './components/ShowUserName'
+import CarDetails from './components/CarDetails'
+import Container from './components/Container'
 
 
 import './App.css'
 
 import City from "./assets/city.jpg"
-import CarDetails from './components/CarDetails'
 
 
 function App() {
@@ -45,6 +46,14 @@ function App() {
       {veiculos.map(veiculo => 
         <CarDetails brand={veiculo.brand}  km={veiculo.km} color={veiculo.color} newCar={veiculo.newCar}/>
       )}
+
+      <Container myValue="Testing">
+        <p>E este é o conteúdo</p>
+      </Container>
+
+      <Container myValue="Testing2">
+        <h5>Este é outro container</h5>
+      </Container>
     </>
   )
 }
