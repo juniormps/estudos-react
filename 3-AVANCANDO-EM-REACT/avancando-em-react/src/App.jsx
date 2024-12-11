@@ -5,6 +5,7 @@ import ConditionalRender from './components/ConditionalRender'
 import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
 import Container from './components/Container'
+import ExecuteFunction from './components/ExecuteFunction'
 
 
 import './App.css'
@@ -23,6 +24,8 @@ function App() {
     {id: 2, brand: "Ford", km: 0, color: "Vermelho", newCar: true},
     {id: 3, brand: "GM", km: 58000, color: "Branco", newCar: false}
   ]
+
+  const showMessage = () => console.log("Evento do componente pai!")
 
   return (
     <>
@@ -44,7 +47,7 @@ function App() {
       <CarDetails brand= "Fiat" km={58000} color="Branco" newCar={false}/>*/}
 
       {veiculos.map(veiculo => 
-        <CarDetails brand={veiculo.brand}  km={veiculo.km} color={veiculo.color} newCar={veiculo.newCar}/>
+        <CarDetails key={veiculo.id} brand={veiculo.brand}  km={veiculo.km} color={veiculo.color} newCar={veiculo.newCar}/>
       )}
 
       <Container myValue="Testing">
@@ -54,6 +57,8 @@ function App() {
       <Container myValue="Testing2">
         <h5>Este é outro container</h5>
       </Container>
+
+      <ExecuteFunction myFunction={showMessage}/>
     </>
   )
 }
