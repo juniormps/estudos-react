@@ -6,11 +6,13 @@ import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
 import Container from './components/Container'
 import ExecuteFunction from './components/ExecuteFunction'
+import Message from './components/Message'
 
 
 import './App.css'
 
 import City from "./assets/city.jpg"
+import ChangeMessageState from './components/ChangeMessageState'
 
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
   ]
 
   const showMessage = () => console.log("Evento do componente pai!")
+
+  const [message, setMessage] = useState("")
+
+  const handleMessage = (msg) => {
+    setMessage(msg)
+  }
 
   return (
     <>
@@ -59,6 +67,9 @@ function App() {
       </Container>
 
       <ExecuteFunction myFunction={showMessage}/>
+
+      <Message msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage}/>
     </>
   )
 }
