@@ -2,6 +2,8 @@ import { useState } from 'react'
 import ManageData from './components/ManageData'
 import ListRender from './components/ListRender'
 import ConditionalRender from './components/ConditionalRender'
+import ShowUserName from './components/ShowUserName'
+
 
 import './App.css'
 
@@ -10,6 +12,10 @@ import City from "./assets/city.jpg"
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const firstName = "Marcio"
+
+  const [lastName] = useState("Junior")
 
   return (
     <>
@@ -24,6 +30,7 @@ function App() {
       <ManageData/>
       <ListRender/>
       <ConditionalRender/>
+      <ShowUserName name= {firstName} lastName= {lastName}/>
     </>
   )
 }
