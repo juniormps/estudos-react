@@ -18,9 +18,9 @@ function App() {
   const [lastName] = useState("Junior")
 
   const veiculos = [
-    {brand: "VW", km: 100000, color: "Azul", newCar: false},
-    {brand: "Ford", km: 0, color: "Vermelho", newCar: true},
-    {brand: "GM", km: 58000, color: "Branco", newCar: false}
+    {id: 1, brand: "VW", km: 100000, color: "Azul", newCar: false},
+    {id: 2, brand: "Ford", km: 0, color: "Vermelho", newCar: true},
+    {id: 3, brand: "GM", km: 58000, color: "Branco", newCar: false}
   ]
 
   return (
