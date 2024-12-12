@@ -38,26 +38,40 @@ function App() {
   return (
     <>
       <h1>Avançando em React.JS</h1>
+
+      {/*Imagem na pasta Public*/}
       <div>
-        {/*Imagem na pasta Public*/}
         <img src="/img1.jpg" alt="Paisagem de campo" />
       </div>
+
+      {/*Imagem em asset*/}
       <div>
         <img src={City} alt="Paisagem de Cidade" />
       </div>
+
+      {/* State */}
       <ManageData/>
+
+      {/* Renderização de lista */}
       <ListRender/>
+
+      {/* Renderização condicional */}
       <ConditionalRender/>
+
+      {/* props */}
       <ShowUserName name= {firstName} lastName= {lastName}/>
       
+      {/* Destructuring e reaproveitamento de componente */}
       {/*<CarDetails brand= "VW" km={100000} color="Azul" newCar={false}/>
       <CarDetails brand= "Ford" km={0} color="Vermelho" newCar={true}/>
       <CarDetails brand= "Fiat" km={58000} color="Branco" newCar={false}/>*/}
 
+      {/* Loop em array de objetos */}
       {veiculos.map(veiculo => 
         <CarDetails key={veiculo.id} brand={veiculo.brand}  km={veiculo.km} color={veiculo.color} newCar={veiculo.newCar}/>
       )}
 
+      {/* Children */}
       <Container myValue="Testing">
         <p>E este é o conteúdo</p>
       </Container>
@@ -66,8 +80,10 @@ function App() {
         <h5>Este é outro container</h5>
       </Container>
 
+      {/* Passando função em prop */}
       <ExecuteFunction myFunction={showMessage}/>
 
+      {/* State Lift */}
       <Message msg={message}/>
       <ChangeMessageState handleMessage={handleMessage}/>
     </>
