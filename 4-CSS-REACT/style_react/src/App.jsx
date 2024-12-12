@@ -1,5 +1,6 @@
 import './App.css'
 import MyComponent from './components/MyComponent'
+import Title from './components/Title'
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
       <h2 className={redTitle ? "redTitle" : "title"}>
         Este título tem classe dinâmica
       </h2>
+
+      {/* CSS Modules */}
+      <Title/>
     </>
   )
 }
