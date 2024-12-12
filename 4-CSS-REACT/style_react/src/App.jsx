@@ -3,6 +3,8 @@ import MyComponent from './components/MyComponent'
 
 function App() {
 
+  const n = 15
+
   return (
     <>
       {/* CSS Global */}
@@ -17,6 +19,11 @@ function App() {
       <p style={{backgroundColor: "green", color: "blue", padding:"25px", borderTop:"2px solid red"}}>
         Este elemento foi estilizado de forma inline
       </p>
+
+      {/* CSS inline dinâmico */}
+      <h2 style={n < 10 ? {color: "darkblue"} : {color: "green"}}>
+        CSS inline dinâmico
+      </h2>
     </>
   )
 }
