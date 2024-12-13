@@ -1,0 +1,9 @@
+.my_list {
+    list-style-type: none;
+    background-color: rgb(235, 202, 160);
+    width: 30vw;
+    margin: auto;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
