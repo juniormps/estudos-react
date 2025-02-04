@@ -1,0 +1,4 @@
+CSS GLOBAL:
+    - como o próprio nome já diz, serve para fazer configurações globais. ex.: resetar configurações CSS.
+    - Deve ser feita no arquivo Index.css (na pasta src)
+    - As outras configurações CSS se sobrepoem a esta se houver conflito.
