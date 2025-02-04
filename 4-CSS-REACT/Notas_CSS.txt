@@ -34,3 +34,14 @@ CSS INLINE DINÂMICO (INLINE STYLE DYNAMIC):
     - É inserido um "IF TERNÁRIO" no atributo "style".
 
     - Ex.: olhar arquivo App.jsx (na parte: "CSS inline dinâmico")
+
+CLASSES DINÂMICAS NO CSS:
+    - Aplica-se uma lógica para ALTERAR A CLASSE de um elemento.
+
+    - Também é utilizado um "IF TERNÁRIO", porém, ao invés dos valores serem setados de acordo com a condicional, a CLASSE é que será setada.
+
+    - É uma abordagem mais interessante que o "CSS Inline Dinâmico", pois há a separação de responsabilidades, com as propriedades CSS escritas em um arquivo CSS separado.
+
+    - As configurações CSS podem ficar no arquivo CSS de componente ou no Index.css 
+
+    - Ex.: olhar arquivo App.jsx (na parte: "Classe dinâmica") e o arquivo Index.css
