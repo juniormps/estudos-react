@@ -27,3 +27,10 @@ CSS INLINE (INLINE STYLE):
     - As propriedades com nomes compostos devem ser escritas no padrão "camel case" e os valores definidos em string com " "
 
     - Ex.: olhar arquivo App.jsx (na parte: "Inline CSS")
+
+CSS INLINE DINÂMICO (INLINE STYLE DYNAMIC):
+    - Aplica estilo baseado em uma CONDICIONAL.
+
+    - É inserido um "IF TERNÁRIO" no atributo "style".
+
+    - Ex.: olhar arquivo App.jsx (na parte: "CSS inline dinâmico")
