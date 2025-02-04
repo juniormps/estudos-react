@@ -18,3 +18,12 @@ CSS DE COMPONENTE:
     - Deve ser feita em um arquivo CSS com o mesmo nome do arquivo JSX a que se destina as configurações. Ex.: App.jsx / App.css
 
     - O arquivo CSS deve ser IMPORTADO no arquivo JSX.
+
+CSS INLINE (INLINE STYLE):
+    - serve para aplicar uma configuração diretamente em um elemento, através do atributo "style".
+
+    - NÃO É UMA MELHOR PRÁTICA, pois dificulta a manutenção. Por isto, deve ser utilizado somente em casos muito pontuais.
+
+    - As propriedades com nomes compostos devem ser escritas no padrão "camel case" e os valores definidos em string com " "
+
+    - Ex.: olhar arquivo App.jsx (na parte: "Inline CSS")
