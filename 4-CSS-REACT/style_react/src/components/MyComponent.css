@@ -1,8 +1,14 @@
+/*Configurações CSS de COMPONENTE*/
+
+
+/*Desta forma, pode vazar*/
 p {
     color: green;
     background-color: black;
 }
 
+
+/*Desta forma, não vaza. MAIS SEGURA*/
 .my-comp-paragraph {
     color: black;
     background-color: gold;

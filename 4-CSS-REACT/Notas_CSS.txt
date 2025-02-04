@@ -1,4 +1,20 @@
 CSS GLOBAL:
     - como o próprio nome já diz, serve para fazer configurações globais. ex.: resetar configurações CSS.
+
     - Deve ser feita no arquivo Index.css (na pasta src)
+
     - As outras configurações CSS se sobrepoem a esta se houver conflito.
+
+CSS DE COMPONENTE:
+    - Utilizado para um componente específico.
+    
+    - IMPORTANTE: 
+        - Se for utilizado seletores de tag HTML (ex.: H1, p, Div, etc) ele NÃO É SCOPED (ou seja, ele pode vazar para outros componentes).
+
+        - Para ser SCOPED, deve ser utilizada uma CLASSE (className) como seletor. Ver os arquivos MyComponent.jsx e MyComponent.css
+
+    - NÃO é interessante para grandes equipes.
+
+    - Deve ser feita em um arquivo CSS com o mesmo nome do arquivo JSX a que se destina as configurações. Ex.: App.jsx / App.css
+
+    - O arquivo CSS deve ser IMPORTADO no arquivo JSX.
