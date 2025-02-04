@@ -11,7 +11,7 @@ CSS DE COMPONENTE:
     - IMPORTANTE: 
         - Se for utilizado seletores de tag HTML (ex.: H1, p, Div, etc) ele NÃO É SCOPED (ou seja, ele pode vazar para outros componentes).
 
-        - Para ser SCOPED, deve ser utilizada uma CLASSE (className) como seletor. Ver os arquivos MyComponent.jsx e MyComponent.css
+        - Para ser um pouco mais SCOPED, deve ser utilizada uma CLASSE (className) como seletor. Ver os arquivos MyComponent.jsx e MyComponent.css. Porém, se houver algum elemento com uma classe de mesmo nome em outro arquivo, a configuração também vaza.
 
     - NÃO é interessante para grandes equipes.
 
@@ -45,3 +45,18 @@ CLASSES DINÂMICAS NO CSS:
     - As configurações CSS podem ficar no arquivo CSS de componente ou no Index.css 
 
     - Ex.: olhar arquivo App.jsx (na parte: "Classe dinâmica") e o arquivo Index.css
+
+CSS MODULES:
+    - Recurso parecido com o CSS de componente, porém, SCOPED. bastante utilizado (inclusive em outros frameworks, como Vue e Angular).
+
+    - A nomenclatura do arquivo deve seguir o seguinte padrão: "Componente.module.css"
+
+    - O arquivo CSS deve ser IMPORTADO no arquivo JSX, da seguinte maneira abaixo:
+
+        import styles from "./Title.module.css"
+
+    - De forma que o "styles" passa a ser um objeto que contém as propriedades CSS do arquivo "Title.modules.css"
+
+    - por conta do fator acima, deve-se evitar traços "-" na nomenclatura das propriedades CSS. Se for necessário, deve-se colocar um undeline "_" no lugar do traço.
+
+    - Ex.: olhar arquivo Title.jsx e Title.module.css
