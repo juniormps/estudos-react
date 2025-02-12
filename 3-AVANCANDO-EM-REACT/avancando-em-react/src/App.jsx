@@ -9,7 +9,7 @@ import ExecuteFunction from './components/ExecuteFunction'
 import Message from './components/Message'
 
 import Teste1 from './components/Teste1'
-import Teste2 from './components/Teste2'
+
 
 
 import './App.css'
@@ -93,7 +93,6 @@ function App() {
       <ChangeMessageState handleMessage={handleMessage}/>
 
       <Teste1/>
-      <Teste2/>
     </>
   )
 }
