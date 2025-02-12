@@ -21,6 +21,13 @@ const MyForm = ({user}) => {
 
         console.log("Enviando o formulário...")
         console.log(name, email)
+
+        // Validações
+        // Envio
+
+        // 7 - Limpar Form
+        setName("")
+        setEmail("")
     }
 
   return (
@@ -48,3 +55,9 @@ const MyForm = ({user}) => {
 }
 
 export default MyForm
+
+// 6 - Controlled Inputs 
+// useState(user ? user.name : "")
+// useState(user ? user.email : "")
+// "value={name}"
+// "value={email}"
