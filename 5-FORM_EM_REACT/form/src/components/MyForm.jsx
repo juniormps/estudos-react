@@ -20,7 +20,7 @@ const MyForm = ({user}) => {
         e.preventDefault()
 
         console.log("Enviando o formulário...")
-        console.log(name, email, bio)
+        console.log(name, email, bio, role)
 
         // Validações
         // Envio
@@ -33,7 +33,10 @@ const MyForm = ({user}) => {
 
 
     // 8
-    const [bio, setBio] = useState("")
+    const [bio, setBio] = useState(user ? user.bio : "")
+
+    //9
+    const [role, setRole] = useState(user ? user.role : "")
 
   return (
     <div>
@@ -50,11 +53,22 @@ const MyForm = ({user}) => {
                 <input type="email" name="email" placeholder='Digite seu e-mail' onChange={(e) => setEmail(e.target.value)} value={email} />
             </label>  {/* 4 - Alterando o state de forma inline (acima) */}
 
+            {/* 8 - Textarea */}
             <label>
                 <span>Bio:</span>
                 <textarea name="bio" placeholder='Descrição do usuário' onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
             </label>
             
+            {/* 9 - Select */}
+            <label>
+                <span>Função na empresa:</span>
+                <select name="role" onChange={(e) => setRole(e.target.value)} value={role}>
+                    <option value="user">Usuário</option>
+                    <option value="editor">Editor</option>
+                    <option value="admin">Administrador</option>
+                </select>
+
+            </label>
             
             <input type="submit" value="Enviar" />
 
