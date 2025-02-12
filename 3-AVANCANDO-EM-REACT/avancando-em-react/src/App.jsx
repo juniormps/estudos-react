@@ -8,11 +8,16 @@ import Container from './components/Container'
 import ExecuteFunction from './components/ExecuteFunction'
 import Message from './components/Message'
 
+import Teste1 from './components/Teste1'
+import Teste2 from './components/Teste2'
+
 
 import './App.css'
 
 import City from "./assets/city.jpg"
 import ChangeMessageState from './components/ChangeMessageState'
+
+
 
 
 function App() {
@@ -86,6 +91,9 @@ function App() {
       {/* State Lift */}
       <Message msg={message}/>
       <ChangeMessageState handleMessage={handleMessage}/>
+
+      <Teste1/>
+      <Teste2/>
     </>
   )
 }
