@@ -25,7 +25,7 @@ const MyForm = ({user}) => {
         // Validações
         // Envio
 
-        // 7 - Limpar Form
+        // 7 - Limpar Form (Deve acontecer após a confirmação de que o formulário foi enviado com sucesso. Após esta confirmação, além da limpeza dos campos, pode ser enviada ao usuário, uma mensagem de confirmação de envio.)
         setName("")
         setEmail("")
         setBio("")
