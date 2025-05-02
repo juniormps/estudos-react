@@ -1,19 +1,64 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Camisa",
-        "price": 59.9
-      },
-      {
-        "id": 2,
-        "name": "Calça vermelha",
-        "price": 90
-      },
-      {
-        "id": 3,
-        "name": "Boné aba reta",
-        "price": 29.9
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": "1",
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": "2",
+      "name": "Calça vermelha",
+      "price": 90
+    },
+    {
+      "id": "3",
+      "name": "Boné aba reta",
+      "price": 29.9
+    },
+    {
+      "id": "d1a4",
+      "name": "cinzeiro",
+      "price": "5.99"
+    },
+    {
+      "id": "ef3c",
+      "name": "cinzeiro",
+      "price": "5.99"
+    },
+    {
+      "id": "9a7e",
+      "name": "toalha",
+      "price": "25.60"
+    },
+    {
+      "id": "154c",
+      "name": "toalha",
+      "price": "25.6"
+    },
+    {
+      "id": "37df",
+      "name": "toalha",
+      "price": "25.6"
+    },
+    {
+      "id": "0786",
+      "name": "colchão",
+      "price": "800.95"
+    },
+    {
+      "id": "a09f",
+      "name": "barco",
+      "price": "5450.00"
+    },
+    {
+      "id": "ba60",
+      "name": "geladeira",
+      "price": "2000"
+    },
+    {
+      "id": "eb9b",
+      "name": "fogão",
+      "price": "1500"
+    }
+  ]
+}
