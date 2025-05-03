@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { useFetch } from './hooks/useFatch'  //4- Custom Hook
 
 const url = "http://localhost:3000/products"
 
@@ -8,7 +9,12 @@ function App() {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
+  //4 - Custom Hook
+  const { data: items } = useFetch(url)
+
+
   //1 - resgatando dados (GET)
+  /*
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,6 +28,7 @@ function App() {
 
     fetchData()
   }, [])
+  */
 
   //2 - Adicionando produtos (POST)
   const handlesubmit = async (e) => {
@@ -57,7 +64,7 @@ function App() {
       <div className="App">
         <h1>Lista de Produtos</h1>
         <ul>
-          {products.map((product) => (
+          {items && items.map((product) => (
             <li key={product.id}>
               {product.name} - R$ {product.price}
             </li>
