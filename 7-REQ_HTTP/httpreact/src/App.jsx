@@ -9,12 +9,12 @@ function App() {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
-  //4 - Custom Hook
-  const { data: items } = useFetch(url)
+  //4 - GET refatorado, utilizando o Custom Hook useFetch
+  const { data: items, httpConfig, loading, error } = useFetch(url)
 
-
+  /*----------------------------------------------------------------------
   //1 - resgatando dados (GET)
-  /*-----------------------------------------------------------------
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,7 +30,10 @@ function App() {
   }, [])
   ----------------------------------------------------------------------*/
 
+
+  
   //2 - Adicionando produtos (POST)
+  
   const handlesubmit = async (e) => {
     e.preventDefault()
 
@@ -39,6 +42,7 @@ function App() {
       price,
     }  //Obs.: o ID é criado automaticamente, não precisa ser inserido.
 
+  /*----------------------------------------------------------------------
     try {
       const res = await fetch(url, {
       method: "POST",
@@ -54,10 +58,19 @@ function App() {
     } catch (error) {
        console.error(`Erro ao cadastrar o produto: ${error}`)
     }
+    ----------------------------------------------------------------------*/
+
+    //5 - POST refatorado utilizando o custon hooh useFetch também.
+    httpConfig(product, "POST")
 
     setName("")
     setPrice("")
   }
+  
+
+  
+
+
 
   return (
     <>

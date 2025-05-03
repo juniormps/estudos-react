@@ -59,6 +59,11 @@
       "id": "eb9b",
       "name": "fogão",
       "price": "1500"
+    },
+    {
+      "id": "ec3c",
+      "name": "sapato",
+      "price": "87"
     }
   ]
 }
