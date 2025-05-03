@@ -5,7 +5,7 @@ import { useFetch } from './hooks/useFatch'  //4- Custom Hook
 const url = "http://localhost:3000/products"
 
 function App() {
-  const [products, setProducts] = useState([])
+  //const [products, setProducts] = useState([])  //Não é mais necessário com o useFetch
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
@@ -14,7 +14,7 @@ function App() {
 
 
   //1 - resgatando dados (GET)
-  /*
+  /*-----------------------------------------------------------------
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +28,7 @@ function App() {
 
     fetchData()
   }, [])
-  */
+  ----------------------------------------------------------------------*/
 
   //2 - Adicionando produtos (POST)
   const handlesubmit = async (e) => {
