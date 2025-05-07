@@ -69,6 +69,21 @@
       "id": "2366",
       "name": "cadarço",
       "price": "2.50"
+    },
+    {
+      "id": "958d",
+      "name": "sopa de legumes",
+      "price": "12.90"
+    },
+    {
+      "id": "97fa",
+      "name": "Doritos",
+      "price": "10.00"
+    },
+    {
+      "id": "68ad",
+      "name": "Batata Frita",
+      "price": "9.99"
     }
   ]
 }

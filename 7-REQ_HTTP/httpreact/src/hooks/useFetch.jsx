@@ -8,6 +8,9 @@ export const useFetch = (url) => {
     const [method, setMethod] = useState(null)
     const [callFetch, setCallFetch] = useState(false)
 
+    //Loading
+    const [loading, setLoading] = useState(false)
+
     const httpConfig = (data, method) => {
         if (method === "POST") {
             setConfig({
@@ -27,6 +30,8 @@ export const useFetch = (url) => {
 
         const fetchData = async () => {
 
+            setLoading(true)  //inicia o loading
+
             try {
             const res = await fetch(url)
             const json = await res.json()
@@ -35,6 +40,8 @@ export const useFetch = (url) => {
             } catch (error) {
             console.error(`Erro ao buscar dados: ${error}`)
             }
+
+            setLoading(false) //finaliza o loading
 
         }
     
@@ -61,6 +68,6 @@ export const useFetch = (url) => {
 
     }, [config, method, url])
 
-    return { data, httpConfig }
+    return { data, httpConfig, loading }
       
 }

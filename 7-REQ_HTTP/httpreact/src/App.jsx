@@ -32,13 +32,18 @@ function App() {
     <>
       <div className="App">
         <h1>Lista de Produtos</h1>
-        <ul>
-          {items && items.map((product) => (
-            <li key={product.id}>
-              {product.name} - R$ {product.price}
-            </li>
-          ))}
-        </ul>
+
+        {loading && <p>Carregando dados...</p> }
+
+        {!loading && (
+          <ul>
+            {items && items.map((product) => (
+              <li key={product.id}>
+                {product.name} - R$ {product.price}
+              </li>
+            ))}
+          </ul>
+        )}
 
         <div className="add-product">
           <form onSubmit={handlesubmit}>
