@@ -13,7 +13,6 @@ function App() {
 
 
   //Adicionando produtos (POST)
-  
   const handlesubmit = async (e) => {
     e.preventDefault()
 
@@ -26,6 +25,12 @@ function App() {
 
     setName("")
     setPrice("")
+  }
+
+  //Deletando itens cadastrados (DELETE)
+  const handleRemove = async (id) => {
+
+    httpConfig(id, "DELETE")
   }
   
   return (
@@ -42,6 +47,10 @@ function App() {
             {items && items.map((product) => (
               <li key={product.id}>
                 {product.name} - R$ {product.price} 
+                <span> 
+                  {loading && <button className='delButton' disabled >Aguarde</button>}
+                  {!loading && <button className='delButton' onClick={() => handleRemove(product.id)} >Excluir</button>}
+                </span>
               </li>
             ))}
           </ul>

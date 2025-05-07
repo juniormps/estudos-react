@@ -45,6 +45,10 @@
   border-top: 1px solid #000;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -56,4 +60,11 @@ form input {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+}
+
+li .delButton {
+  height: 30px;
+  margin-left: 50px;
+  border: 1px solid black;
+  font-size: 0.8rem;
 }
