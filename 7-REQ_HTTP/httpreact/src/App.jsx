@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import { useFetch } from './hooks/useFatch'  //Custom Hook
+import { useFetch } from './hooks/useFetch'  //Custom Hook
 
 const url = "http://localhost:3000/products"
 
