@@ -35,11 +35,13 @@ function App() {
 
         {loading && <p>Carregando dados...</p> }
 
-        {!loading && (
+        {error && <p>{error}</p> }
+
+        {!error && (
           <ul>
             {items && items.map((product) => (
               <li key={product.id}>
-                {product.name} - R$ {product.price}
+                {product.name} - R$ {product.price} 
               </li>
             ))}
           </ul>
