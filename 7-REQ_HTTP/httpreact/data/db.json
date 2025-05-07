@@ -84,6 +84,16 @@
       "id": "68ad",
       "name": "Batata Frita",
       "price": "9.99"
+    },
+    {
+      "id": "83f7",
+      "name": "Molho de Tomate",
+      "price": "3.60"
+    },
+    {
+      "id": "66ce",
+      "name": "Salsicha",
+      "price": "12.00"
     }
   ]
 }
