@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 
 //4 - Custom Hook
 export const useApi = (url) => {
+    
     const [data, setData] = useState(null)
-
     const [config, setConfig] = useState(null)
     const [method, setMethod] = useState(null)
     const [callFetch, setCallFetch] = useState(false)
