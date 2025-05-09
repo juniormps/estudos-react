@@ -69,5 +69,5 @@ export const useApi = (baseUrl) => {
 //tratamento robusto (A atualização otimista assume que a operação no servidor vai ter sucesso. Você pode querer adicionar um rollback em caso de falha.)
 //fluxo das requisições
 //adicionar PUT e PATCH
-//espaçamento da identação do vscode
-//linhas congeladas no vscode
+//isto é uma API?
+//isto é CRUD?

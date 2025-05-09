@@ -49,6 +49,17 @@ li {
   margin-bottom: 10px;
 }
 
+ul {
+    padding: 0;
+}
+
+li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -64,7 +75,6 @@ form input {
 
 li .delButton {
   height: 30px;
-  margin-left: 50px;
   border: 1px solid black;
   font-size: 0.8rem;
 }
