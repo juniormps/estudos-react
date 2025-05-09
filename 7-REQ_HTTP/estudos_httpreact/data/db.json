@@ -84,6 +84,16 @@
       "id": "484f",
       "name": "pizza",
       "price": "14.99"
+    },
+    {
+      "id": "f5a4",
+      "name": "Tomate",
+      "price": "8.99"
+    },
+    {
+      "id": "1b44",
+      "name": "Cebola",
+      "price": "4.80"
     }
   ]
 }
