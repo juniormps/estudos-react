@@ -1,0 +1,89 @@
+{
+  "products": [
+    {
+      "id": "37df",
+      "name": "toalha",
+      "price": "25.6"
+    },
+    {
+      "id": "0786",
+      "name": "colchão",
+      "price": "800.95"
+    },
+    {
+      "id": "a09f",
+      "name": "barco",
+      "price": "5450.00"
+    },
+    {
+      "id": "ba60",
+      "name": "geladeira",
+      "price": "2000"
+    },
+    {
+      "id": "eb9b",
+      "name": "fogão",
+      "price": "1500"
+    },
+    {
+      "id": "ec3c",
+      "name": "sapato",
+      "price": "87"
+    },
+    {
+      "id": "2366",
+      "name": "cadarço",
+      "price": "2.50"
+    },
+    {
+      "id": "97fa",
+      "name": "Doritos",
+      "price": "10.00"
+    },
+    {
+      "id": "68ad",
+      "name": "Batata Frita",
+      "price": "9.99"
+    },
+    {
+      "id": "83f7",
+      "name": "Molho de Tomate",
+      "price": "3.60"
+    },
+    {
+      "id": "66ce",
+      "name": "Salsicha",
+      "price": "12.00"
+    },
+    {
+      "id": "bdbc",
+      "name": "Filé Mignon",
+      "price": "59.90"
+    },
+    {
+      "id": "c0db",
+      "name": "Macarrão Espaguete",
+      "price": "5.80"
+    },
+    {
+      "id": "8a63",
+      "name": "Alface",
+      "price": "3.35"
+    },
+    {
+      "id": "b6de",
+      "name": "Achocolatado",
+      "price": "12.00"
+    },
+    {
+      "id": "0054",
+      "name": "Achocolatado",
+      "price": "12.00"
+    },
+    {
+      "id": "484f",
+      "name": "pizza",
+      "price": "14.99"
+    }
+  ]
+}
