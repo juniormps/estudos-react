@@ -26,16 +26,6 @@
       "price": "1500"
     },
     {
-      "id": "ec3c",
-      "name": "sapato",
-      "price": "87"
-    },
-    {
-      "id": "2366",
-      "name": "cadarço",
-      "price": "2.50"
-    },
-    {
       "id": "97fa",
       "name": "Doritos",
       "price": "10.00"
@@ -94,6 +84,21 @@
       "id": "1b44",
       "name": "Cebola",
       "price": "4.80"
+    },
+    {
+      "id": "86ba",
+      "name": "Laranja",
+      "price": "6.78"
+    },
+    {
+      "id": "7b66",
+      "name": "Maçã",
+      "price": "11.50"
+    },
+    {
+      "id": "042f",
+      "name": "Carvão",
+      "price": "25.00"
     }
   ]
 }

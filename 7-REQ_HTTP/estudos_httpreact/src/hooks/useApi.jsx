@@ -1,140 +1,73 @@
 import { useState, useEffect } from "react"
 
 //4 - Custom Hook
-export const useApi = (url) => {
-    
+export const useApi = (baseUrl) => {
+
     const [data, setData] = useState(null)
-    const [config, setConfig] = useState(null)
-    const [method, setMethod] = useState(null)
-    const [callFetch, setCallFetch] = useState(false)
-
-    //Loading
     const [loading, setLoading] = useState(false)
-
-    //Tratando erros
     const [error, setError] = useState(null)
+      
+    const request = async (method, endpoint = "", body = null) => {
+        
+        setLoading(true)
+        setError(null)
 
-    //Delete
-    const [itemId, setItemId] = useState(null)
-
-
-    //------------------------------------------------------------------------------
-    //Configurações da requisição
-    const httpConfig = (data, method) => {
-        if (method === "POST") {
-            setConfig({
+        try {
+            const url = endpoint ? `${baseUrl}/${endpoint}` : baseUrl
+            const options = {
                 method,
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
+                headers: { "Content-Type": "application/json" },
+                body: body ? JSON.stringify(body) : null,
+            }
+        
+            const res = await fetch(url, options)
+            if (!res.ok) throw new Error(`Erro: ${res.status}`)
+        
+            const json = await res.json();
+            
+            if (method === "GET") {
+                setData(json)
+            } else if (method === "POST") {
+                setData(prev => [...prev, json]) // Adiciona novo item
+            } else if (method === "DELETE") {
+                setData(prev => prev.filter(item => item.id !== endpoint)) // Remove item
+            }
+            
+            return json
+    
+        } catch (error) {
+            setError(error.message)
+            throw error
 
-            setMethod(method)
-
-        } else if (method === "DELETE") {
-            setConfig({
-                method,
-                headers: {
-                    "Content-type": "application/json"
-                }
-            })
-
-            setMethod(method)
-            setItemId(data)
+        } finally {
+            setLoading(false)
 
         }
     }
 
-    //------------------------------------------------------------------------------
-    //GET
+
+    // Carrega dados iniciais
     useEffect(() => {
-
-        const fetchData = async () => {
-
-            setLoading(true)  //inicia o loading
-            setError(null)  //Reseta o erro antes de nova requisição
-
-            try {
-
-                const res = await fetch(url)
-
-                if (!res.ok) throw new Error("Erro ao carregar os dados")
-
-                const json = await res.json()
-                setData(json)
-
-            } catch (error) {
-                console.error(error.message)
-
-                setError(
-                    error.message.includes("Failed to fetch") ? "Falha na conexão com o servidor" : `Erro ao carregar os dados: ${error.message}`
-                )
-
-            } finally {
-                setLoading(false) //finaliza o loading
-            }
-
-        }
+        request("GET")
+    }, [baseUrl])
     
-        fetchData()
-        
-    }, [url, callFetch])
-
-
-    //------------------------------------------------------------------------------
-    //POST e DELETE
-    useEffect(() => {
-
-        const httpRequest = async () => {
-
-            setLoading(true) 
-            setError(null)
-
-            try {
-
-                if (method === "POST") {
-
-                    const res = await fetch(url, config)
     
-                    if (!res.ok) throw new Error("Erro ao criar produto")
+    // Métodos nomeados (opcional)
+    const get = () => request("GET")
+    const post = (body) => request("POST", "", body)
+    const put = (id, body) => request("PUT", id, body)
+    const patch = (id, body) => request("PATCH", id, body)
+    const del = (id) => request("DELETE", id)
     
-                    const json = await res.json()
-                    setCallFetch(json)
-        
-    
-                } else if (method === "DELETE") {
-
-                    const deleteURL = `${url}/${itemId}`
-                    const res = await fetch(deleteURL, config)
-    
-                    if (!res.ok) throw new Error("Erro ao deletar produto")
-    
-                    const json = await res.json()
-                    setCallFetch(json)
-                    
-                }
-
-            } catch (error) {
-                console.error(error.message)
-
-                setError(
-                    error.message.includes("Failed to fetch") ? `Erro de conexão: ${error.message}` : error.message
-                )
-
-            } finally {
-                setLoading(false)
-            }
-
-        }
-
-        httpRequest()
-
-    }, [config, method, url, itemId])
-    
-    //------------------------------------------------------------------------------
-    
-
-    return { data, httpConfig, loading, error }
+    return { data, loading, error, get, post, put, patch, del }
       
 }
+
+
+//Dúvidas:
+//filter
+//tratamento robusto (A atualização otimista assume que a operação no servidor vai ter sucesso. Você pode querer adicionar um rollback em caso de falha.)
+//fluxo das requisições
+//adicionar PUT e PATCH
+//espaçamento da identação do vscode
+//linhas congeladas no vscode
