@@ -54,6 +54,36 @@
       "id": "66ce",
       "name": "Salsicha",
       "price": "12.00"
+    },
+    {
+      "id": "bdbc",
+      "name": "Filé Mignon",
+      "price": "59.90"
+    },
+    {
+      "id": "c0db",
+      "name": "Macarrão Espaguete",
+      "price": "5.80"
+    },
+    {
+      "id": "8a63",
+      "name": "Alface",
+      "price": "3.35"
+    },
+    {
+      "id": "b6de",
+      "name": "Achocolatado",
+      "price": "12.00"
+    },
+    {
+      "id": "0054",
+      "name": "Achocolatado",
+      "price": "12.00"
+    },
+    {
+      "id": "484f",
+      "name": "pizza",
+      "price": "14.99"
     }
   ]
 }

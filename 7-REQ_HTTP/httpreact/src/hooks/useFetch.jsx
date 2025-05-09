@@ -17,6 +17,9 @@ export const useFetch = (url) => {
     //Delete
     const [itemId, setItemId] = useState(null)
 
+
+    //------------------------------------------------------------------------------
+    //Configurações da requisição
     const httpConfig = (data, method) => {
         if (method === "POST") {
             setConfig({
@@ -43,25 +46,34 @@ export const useFetch = (url) => {
         }
     }
 
+    //------------------------------------------------------------------------------
     //GET
     useEffect(() => {
 
         const fetchData = async () => {
 
             setLoading(true)  //inicia o loading
+            setError(null)  //Reseta o erro antes de nova requisição
 
             try {
+
                 const res = await fetch(url)
+
+                if (!res.ok) throw new Error("Erro ao carregar os dados")
+
                 const json = await res.json()
                 setData(json)
 
             } catch (error) {
                 console.error(error.message)
 
-                setError("Houve algum erro ao carregar os dados")
-            }
+                setError(
+                    error.message.includes("Failed to fetch") ? "Falha na conexão com o servidor" : `Erro ao carregar os dados: ${error.message}`
+                )
 
-            setLoading(false) //finaliza o loading
+            } finally {
+                setLoading(false) //finaliza o loading
+            }
 
         }
     
@@ -69,32 +81,58 @@ export const useFetch = (url) => {
         
     }, [url, callFetch])
 
-    
+
+    //------------------------------------------------------------------------------
     //POST e DELETE
     useEffect(() => {
 
         const httpRequest = async () => {
-            if (method === "POST") {
-                let fetchOptions = [url, config]
 
-                const res = await fetch(...fetchOptions)
-                const json = await res.json()
+            setLoading(true) 
+            setError(null)
 
-                setCallFetch(json)
+            try {
 
-            } else if (method === "DELETE") {
-                const deleteURL = `${url}/${itemId}`
+                if (method === "POST") {
 
-                const res = await fetch(deleteURL, config)
-                const json = await res.json()
+                    const res = await fetch(url, config)
+    
+                    if (!res.ok) throw new Error("Erro ao criar produto")
+    
+                    const json = await res.json()
+                    setCallFetch(json)
+        
+    
+                } else if (method === "DELETE") {
 
-                setCallFetch(json)
+                    const deleteURL = `${url}/${itemId}`
+                    const res = await fetch(deleteURL, config)
+    
+                    if (!res.ok) throw new Error("Erro ao deletar produto")
+    
+                    const json = await res.json()
+                    setCallFetch(json)
+                    
+                }
+
+            } catch (error) {
+                console.error(error.message)
+
+                setError(
+                    error.message.includes("Failed to fetch") ? `Erro de conexão: ${error.message}` : error.message
+                )
+
+            } finally {
+                setLoading(false)
             }
+
         }
 
         httpRequest()
 
-    }, [config, method, url])
+    }, [config, method, url, itemId])
+    
+    //------------------------------------------------------------------------------
     
 
     return { data, httpConfig, loading, error }
