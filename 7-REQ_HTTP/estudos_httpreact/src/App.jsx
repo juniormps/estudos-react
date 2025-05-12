@@ -7,6 +7,7 @@ const baseUrl = "http://localhost:3000/products"
 function App() {
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
+    const [editingId, setEditingId] = useState(null)
 
     const { data: items, loading, error, get, post, put, patch, del } = useApi(baseUrl)
 
@@ -16,14 +17,22 @@ function App() {
         e.preventDefault()
 
         try {
-            const product = { name, price } 
-            await post(product)
+            const product = { name, price }
+            
+            if (editingId) {
+                // Se estiver editando, faz PUT (atualização completa)
+                await put(editingId, product)
+                setEditingId(null)
+            } else {
+                // Se não estiver editando, faz POST (criação)
+                await post(product)
+            }
+            
             setName("")
             setPrice("")
 
         } catch (error) {
-            console.error(`Falha ao criar produto: ${error}`)
-
+            console.error(`Falha ao criar/atualizar produto: ${error}`)
         }
     }
 
@@ -38,6 +47,25 @@ function App() {
             
         }
     }
+
+
+    // Editando itens (PUT/PATCH)
+    const handleEdit = (product) => {
+        setName(product.name)
+        setPrice(product.price)
+        setEditingId(product.id)
+    }
+
+
+    // Atualização parcial com PATCH (exemplo separado)
+    const handleUpdatePrice = async (id, newPrice) => {
+        try {
+            await patch(id, { price: newPrice })
+        } catch (error) {
+            console.error(`Falha ao atualizar preço: ${error}`)
+        }
+    }
+
   
   return (
     <>
@@ -54,8 +82,18 @@ function App() {
                         <li key={product.id}>
                             {product.name} - R$ {product.price} 
                             <span> 
-                                {loading && <button className='delButton' disabled >Aguarde</button>}
-                                {!loading && <button className='delButton' onClick={() => handleRemove(product.id)} >Excluir</button>}
+                                {loading && <button disabled >Aguarde</button>}
+                                {!loading && (
+                                    <>
+                                        <button onClick={() => handleEdit(product)}>Editar</button>
+
+                                        <button onClick={() => handleRemove(product.id)} >Excluir</button>
+
+                                        <button onClick={() => handleUpdatePrice(product.id, prompt("Novo preço:", product.price))}>
+                                            Atualizar Preço
+                                        </button>
+                                    </>
+                                )}
                             </span>
                         </li>
                     ))}
@@ -86,7 +124,18 @@ function App() {
                     </label>
 
                     {loading && <input type="submit" disabled value="Aguarde" />}
-                    {!loading && <input type="submit" value="Criar" />}
+                    {!loading && (<input type="submit" value={editingId ? "Atualizar" : "Criar"} />)}
+
+                    {editingId && (
+                        <button type="button" onClick={() => {
+                            setEditingId(null)
+                            setName("")
+                            setPrice("")
+                            }}>
+                            Cancelar Edição
+                        </button>
+                    )}
+
                 </form>
             </div>
         </div>
@@ -95,3 +144,5 @@ function App() {
 }
 
 export default App
+
+

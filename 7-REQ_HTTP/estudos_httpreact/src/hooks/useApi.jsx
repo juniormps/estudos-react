@@ -31,6 +31,8 @@ export const useApi = (baseUrl) => {
                 setData(prev => [...prev, json]) // Adiciona novo item
             } else if (method === "DELETE") {
                 setData(prev => prev.filter(item => item.id !== endpoint)) // Remove item
+            } else if (method === "PUT" || method === "PATCH") {
+                setData(prev => prev.map(item => item.id === endpoint ? { ...item, ...json } : item))
             }
             
             return json
@@ -65,9 +67,6 @@ export const useApi = (baseUrl) => {
 
 
 //Dúvidas:
-//filter
-//tratamento robusto (A atualização otimista assume que a operação no servidor vai ter sucesso. Você pode querer adicionar um rollback em caso de falha.)
-//fluxo das requisições
 //adicionar PUT e PATCH
 //isto é uma API?
 //isto é CRUD?
