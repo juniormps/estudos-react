@@ -64,6 +64,11 @@
       "id": "042f",
       "name": "Carvão",
       "price": "25.00"
+    },
+    {
+      "id": "f856",
+      "name": "Melancia",
+      "price": "15.65"
     }
   ]
 }
