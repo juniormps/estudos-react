@@ -74,8 +74,41 @@ form input {
   margin-bottom: 15px;
 }
 
-li button {
+.buttonDefault {
   height: 30px;
   border: 1px solid black;
   font-size: 0.8rem;
+}
+
+/* Estilos para o modal de edição de preço */
+.price-modal {
+    position: relative;
+    padding: 15px;
+    margin-top: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.price-modal label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.price-modal input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 8px;
+    cursor: pointer;
 }

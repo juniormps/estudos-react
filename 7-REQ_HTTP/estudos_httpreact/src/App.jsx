@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useApi } from './hooks/useApi'  //Custom Hook
 
 const baseUrl = "http://localhost:3000/products"
@@ -8,6 +8,8 @@ function App() {
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
     const [editingId, setEditingId] = useState(null)
+    const [editingPrice, setEditingPrice] = useState(null)
+    const priceInputRef = useRef(null)
 
     const { data: items, loading, error, get, post, put, patch, del } = useApi(baseUrl)
 
@@ -57,10 +59,37 @@ function App() {
     }
 
 
-    // Atualização parcial com PATCH (exemplo separado)
-    const handleUpdatePrice = async (id, newPrice) => {
+    //Cancelando edição
+    const handleCancelEdit = () => {
+        setEditingId(null)
+        setName("")
+        setPrice("")
+    }
+
+
+
+    // Atualização parcial com PATCH
+        // Abre o modal de edição de preço
+    const openPriceEditor = (id, currentPrice) => {
+        setEditingPrice(id)
+        // Usamos setTimeout para garantir que o DOM esteja atualizado
+        setTimeout(() => {
+            priceInputRef.current?.focus()
+            priceInputRef.current?.select()
+        }, 0)
+    }
+
+        // Confirma a atualização do preço
+    const handlePriceUpdate = async (id) => {
         try {
+            const newPrice = Number(priceInputRef.current.value)
+            if (isNaN(newPrice)) {
+                alert("Por favor, insira um preço válido")
+                return
+            }
+            
             await patch(id, { price: newPrice })
+            setEditingPrice(null)
         } catch (error) {
             console.error(`Falha ao atualizar preço: ${error}`)
         }
@@ -82,19 +111,41 @@ function App() {
                         <li key={product.id}>
                             {product.name} - R$ {product.price} 
                             <span> 
-                                {loading && <button disabled >Aguarde</button>}
+                                {loading && <button className='buttonDefault' disabled >Aguarde</button>}
                                 {!loading && (
                                     <>
-                                        <button onClick={() => handleEdit(product)}>Editar</button>
+                                        <button className='buttonDefault' onClick={() => handleEdit(product)}>Editar</button>
 
-                                        <button onClick={() => handleRemove(product.id)} >Excluir</button>
+                                        <button className='buttonDefault' onClick={() => handleRemove(product.id)} >Excluir</button>
 
-                                        <button onClick={() => handleUpdatePrice(product.id, prompt("Novo preço:", product.price))}>
+                                        <button className='buttonDefault' onClick={() => openPriceEditor(product.id, product.price)}>
                                             Atualizar Preço
                                         </button>
                                     </>
                                 )}
                             </span>
+                            
+                            {/* Modal de edição de preço */}
+                            {editingPrice === product.id && (
+                                <div className="price-modal">
+                                    <label>
+                                        Novo Preço:
+                                        <input
+                                            type="number"
+                                            defaultValue={product.price}
+                                            ref={priceInputRef}
+                                        />
+                                    </label>
+                                    <div className="modal-actions">
+                                        <button onClick={() => handlePriceUpdate(product.id)}>
+                                            Confirmar
+                                        </button>
+                                        <button onClick={() => setEditingPrice(null)}>
+                                            Cancelar
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -123,15 +174,15 @@ function App() {
                         />
                     </label>
 
-                    {loading && <input type="submit" disabled value="Aguarde" />}
-                    {!loading && (<input type="submit" value={editingId ? "Atualizar" : "Criar"} />)}
+                    {loading && <input type="submit" className='buttonDefault' disabled value="Aguarde" />}
+                    {!loading && (<input type="submit" className='buttonDefault' value={editingId ? "Atualizar" : "Criar"} />)}
 
                     {editingId && (
-                        <button type="button" onClick={() => {
+                        <button type="button" className='buttonDefault' onClick={() => {
                             setEditingId(null)
                             setName("")
                             setPrice("")
-                            }}>
+                        }}>
                             Cancelar Edição
                         </button>
                     )}
@@ -144,5 +195,25 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+/*
+const handleUpdatePrice = async (id, newPrice) => {
+        try {
+            await patch(id, { price: newPrice })
+        } catch (error) {
+            console.error(`Falha ao atualizar preço: ${error}`)
+        }
+    }
+
+-------------------------------------------------------------------------------------------
+
+<button className='buttonDefault' onClick={() => handleUpdatePrice(product.id, prompt("Novo preço:", product.price))}>
+    Atualizar Preço
+</button>
+*/
 
 

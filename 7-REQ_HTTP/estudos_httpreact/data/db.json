@@ -3,7 +3,7 @@
     {
       "id": "a09f",
       "name": "barco",
-      "price": "5450.00"
+      "price": "10000.00"
     },
     {
       "id": "ba60",
@@ -18,7 +18,7 @@
     {
       "id": "97fa",
       "name": "Doritos",
-      "price": "10.00"
+      "price": 6.55
     },
     {
       "id": "83f7",
@@ -31,19 +31,14 @@
       "price": "59.90"
     },
     {
-      "id": "8a63",
       "name": "Alface",
-      "price": "3.35"
+      "price": "4.56",
+      "id": "8a63"
     },
     {
-      "id": "b6de",
       "name": "Achocolatado",
-      "price": "12.00"
-    },
-    {
-      "id": "0054",
-      "name": "Achocolatado",
-      "price": "12.00"
+      "price": "12.99",
+      "id": "b6de"
     },
     {
       "id": "1b44",
@@ -68,7 +63,7 @@
     {
       "id": "f856",
       "name": "Melancia",
-      "price": "14.65"
+      "price": "14.52"
     }
   ]
 }
