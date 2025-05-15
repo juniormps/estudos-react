@@ -11,14 +11,14 @@
       "price": "2000"
     },
     {
-      "id": "eb9b",
       "name": "fogão",
-      "price": "1500"
+      "price": "1500.00",
+      "id": "eb9b"
     },
     {
       "id": "97fa",
       "name": "Doritos",
-      "price": 6.55
+      "price": 7.75
     },
     {
       "id": "83f7",
@@ -32,7 +32,7 @@
     },
     {
       "name": "Alface",
-      "price": "4.56",
+      "price": "6.00",
       "id": "8a63"
     },
     {
@@ -43,7 +43,7 @@
     {
       "id": "1b44",
       "name": "Cebola",
-      "price": "4.80"
+      "price": 5.25
     },
     {
       "id": "86ba",

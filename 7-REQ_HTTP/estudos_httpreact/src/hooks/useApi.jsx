@@ -69,4 +69,3 @@ export const useApi = (baseUrl) => {
 //Dúvidas:
 //isto é uma API?
 //isto é CRUD?
-//Patch
