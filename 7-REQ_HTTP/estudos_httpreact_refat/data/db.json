@@ -1,0 +1,69 @@
+{
+  "products": [
+    {
+      "id": "a09f",
+      "name": "barco",
+      "price": "10000.00"
+    },
+    {
+      "id": "ba60",
+      "name": "geladeira",
+      "price": "2000"
+    },
+    {
+      "name": "fogão",
+      "price": "1500.00",
+      "id": "eb9b"
+    },
+    {
+      "id": "97fa",
+      "name": "Doritos",
+      "price": 7.75
+    },
+    {
+      "id": "83f7",
+      "name": "Molho de Tomate",
+      "price": "3.60"
+    },
+    {
+      "id": "bdbc",
+      "name": "Filé Mignon",
+      "price": "59.90"
+    },
+    {
+      "name": "Alface",
+      "price": "6.00",
+      "id": "8a63"
+    },
+    {
+      "name": "Achocolatado",
+      "price": "12.99",
+      "id": "b6de"
+    },
+    {
+      "id": "1b44",
+      "name": "Cebola",
+      "price": 5.25
+    },
+    {
+      "id": "86ba",
+      "name": "Laranja",
+      "price": "6.78"
+    },
+    {
+      "id": "7b66",
+      "name": "Maçã",
+      "price": "11.50"
+    },
+    {
+      "id": "042f",
+      "name": "Carvão",
+      "price": "25.00"
+    },
+    {
+      "id": "f856",
+      "name": "Melancia",
+      "price": "14.52"
+    }
+  ]
+}
