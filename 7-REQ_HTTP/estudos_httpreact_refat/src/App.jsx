@@ -1,6 +1,8 @@
 import './App.css'
 import { useState, useRef } from 'react'
 import { useApi } from './hooks/useApi'  //Custom Hook
+import EditButton from './components/EditButton'
+import DeleteButton from './components/DeleteButton'
 
 const baseUrl = "http://localhost:3000/products"
 
@@ -37,26 +39,7 @@ function App() {
             console.error(`Falha ao criar/atualizar produto: ${error}`)
         }
     }
-
-    //Deletando itens cadastrados (DELETE)
-    const handleRemove = async (id) => {
-
-        try {
-            await del(id)
-
-        } catch (error) {
-            console.error(`Falha ao deletar produto: ${error}`)
-            
-        }
-    }
-
-
-    // Editando itens (PUT/PATCH)
-    const handleEdit = (product) => {
-        setName(product.name)
-        setPrice(product.price)
-        setEditingId(product.id)
-    }
+    
 
 
     //Cancelando edição
@@ -126,9 +109,9 @@ function App() {
                                 {loading && <button className='buttonDefault' disabled >Aguarde</button>}
                                 {!loading && (
                                     <>
-                                        <button className='buttonDefault' onClick={() => handleEdit(product)}>Editar</button>
+                                        <EditButton product={product} setName={setName} setPrice={setPrice} setEditingId={setEditingId} />
 
-                                        <button className='buttonDefault' onClick={() => handleRemove(product.id)} >Excluir</button>
+                                        <DeleteButton product={product} del={del} />
 
                                         <button className='buttonDefault' onClick={() => openPriceEditor(product.id, product.price)}>
                                             Atualizar Preço
@@ -203,25 +186,4 @@ function App() {
 }
 
 export default App
-
-
-
-
-
-/*
-const handleUpdatePrice = async (id, newPrice) => {
-        try {
-            await patch(id, { price: newPrice })
-        } catch (error) {
-            console.error(`Falha ao atualizar preço: ${error}`)
-        }
-    }
-
--------------------------------------------------------------------------------------------
-
-<button className='buttonDefault' onClick={() => handleUpdatePrice(product.id, prompt("Novo preço:", product.price))}>
-    Atualizar Preço
-</button>
-*/
-
 
