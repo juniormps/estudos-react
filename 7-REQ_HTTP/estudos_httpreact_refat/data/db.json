@@ -28,7 +28,7 @@
     {
       "id": "bdbc",
       "name": "Filé Mignon",
-      "price": "59.90"
+      "price": 41
     },
     {
       "name": "Alface",
@@ -37,7 +37,7 @@
     },
     {
       "name": "Achocolatado",
-      "price": "12.99",
+      "price": 12,
       "id": "b6de"
     },
     {
@@ -48,7 +48,7 @@
     {
       "id": "86ba",
       "name": "Laranja",
-      "price": "6.78"
+      "price": 8.95
     },
     {
       "id": "7b66",

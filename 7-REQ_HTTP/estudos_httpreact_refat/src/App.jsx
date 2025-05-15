@@ -3,6 +3,9 @@ import { useState, useRef } from 'react'
 import { useApi } from './hooks/useApi'  //Custom Hook
 import EditButton from './components/EditButton'
 import DeleteButton from './components/DeleteButton'
+import PriceModalButton from './components/PriceModalButton'
+import ModalEditPrice from './components/ModalEditPrice'
+import CancelEditButton from './components/CancelEditButton'
 
 const baseUrl = "http://localhost:3000/products"
 
@@ -39,56 +42,6 @@ function App() {
             console.error(`Falha ao criar/atualizar produto: ${error}`)
         }
     }
-    
-
-
-    //Cancelando edição
-    const handleCancelEdit = () => {
-        setEditingId(null)
-        setName("")
-        setPrice("")
-    }
-
-
-
-    // Atualização parcial com PATCH
-        // Abre o modal de edição de preço
-    const openPriceEditor = (id, currentPrice) => {
-        setEditingPrice(id)
-        // Usamos setTimeout para garantir que o DOM esteja atualizado
-        setTimeout(() => {
-            priceInputRef.current?.focus()
-            priceInputRef.current?.select()
-        }, 0)
-    }
-
-        // Confirma a atualização do preço
-    const handlePriceUpdate = async (id) => {
-        if (!priceInputRef.current) {
-            console.error("Elemento de input não encontrado")
-            return
-        }
-
-        const rawValue = priceInputRef.current.value
-        if (!rawValue.trim()) {
-            alert("Preço não pode estar vazio")
-            return
-        }
-
-        const newPrice = Number(rawValue)
-        if (isNaN(newPrice) || newPrice <= 0) {
-            alert("Por favor, insira um preço válido")
-            return
-        }
-
-        try {
-            await patch(id, { price: newPrice })
-            setEditingPrice(null)
-
-        } catch (error) {
-            console.error(`Falha ao atualizar preço: ${error}`)
-        }
-    }
 
   
   return (
@@ -113,34 +66,15 @@ function App() {
 
                                         <DeleteButton product={product} del={del} />
 
-                                        <button className='buttonDefault' onClick={() => openPriceEditor(product.id, product.price)}>
-                                            Atualizar Preço
-                                        </button>
+                                        <PriceModalButton product={product} setEditingPrice={setEditingPrice} priceInputRef={priceInputRef} />
                                     </>
                                 )}
                             </span>
+
+                            {editingPrice === product.id && (<ModalEditPrice product={product} setEditingPrice={setEditingPrice} priceInputRef={priceInputRef} patch={patch} />)}
+
                             
-                            {/* Modal de edição de preço */}
-                            {editingPrice === product.id && (
-                                <div className="price-modal">
-                                    <label>
-                                        Novo Preço:
-                                        <input
-                                            type="number"
-                                            defaultValue={product.price}
-                                            ref={priceInputRef}
-                                        />
-                                    </label>
-                                    <div className="modal-actions">
-                                        <button onClick={() => handlePriceUpdate(product.id)}>
-                                            Confirmar
-                                        </button>
-                                        <button onClick={() => setEditingPrice(null)}>
-                                            Cancelar
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
+                            
                         </li>
                     ))}
                 </ul>
@@ -172,11 +106,7 @@ function App() {
                     {loading && <input type="submit" className='buttonDefault' disabled value="Aguarde" />}
                     {!loading && (<input type="submit" className='buttonDefault' value={editingId ? "Atualizar" : "Criar"} />)}
 
-                    {editingId && (
-                        <button type="button" className='buttonDefault' onClick={() => handleCancelEdit()}>
-                            Cancelar Edição
-                        </button>
-                    )}
+                    {editingId && (<CancelEditButton setEditingId={setEditingId} setName={setName} setPrice={setPrice} /> )}
 
                 </form>
             </div>
