@@ -64,8 +64,3 @@ export const useApi = (baseUrl) => {
     return { data, loading, error, get, post, put, patch, del }
       
 }
-
-
-//Dúvidas:
-//isto é uma API?
-//isto é CRUD?
