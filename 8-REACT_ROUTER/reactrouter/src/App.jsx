@@ -1,12 +1,13 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+//Components
+import Navbar from './components/Navbar'
+
 //Pages
 import Home from "./pages/Home"
 import About from "./pages/About"
-
-//Components
-import Navbar from './components/Navbar'
+import Product from "./pages/Product"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />}  />
+                    <Route path='/products/:id' element={<Product />} />
                 </Routes>
             </BrowserRouter>
         </div>
@@ -30,4 +32,7 @@ export default App
 
 
 //Obs.:
+
 //Elementos como o (h1), que estão fora do BrowseRouter, serão repetidos em todas as páginas.
+
+//quando é inserido o ":id" no path, a rota fica dinâmica.
