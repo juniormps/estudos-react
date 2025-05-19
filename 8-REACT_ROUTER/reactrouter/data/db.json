@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "id": "37df",
+      "name": "toalha",
+      "price": "25.6"
+    },
+    {
+      "id": "0786",
+      "name": "colchão",
+      "price": "800.95"
+    },
+    {
+      "id": "484f",
+      "name": "pizza",
+      "price": "14.99"
+    }
+  ]
+}
