@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useApi } from "../hooks/useApi"
 
 const Product = () => {
@@ -23,6 +23,9 @@ const Product = () => {
             <div>
                 <h1>{product.name} </h1>
                 <p>R$ {product.price} </p>
+
+                {/* Nested Router */}
+                <Link to={`/products/${product.id}/info`} >Mais informações</Link> 
             </div>
         )}
     </>
