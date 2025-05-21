@@ -21,17 +21,28 @@ function App() {
             <h1>React Router</h1> 
             <BrowserRouter>
                 <Navbar />
+
+                {/* Search */}
                 <SearchForm />
+                
                 <Routes>
                     <Route path='/' element={<Home />} />
+
                     <Route path='/about' element={<About />}  />
+
+                    {/* Rota Dinâmica */}
                     <Route path='/products/:id' element={<Product />} />
+
+                    {/* Nested Route */}
                     <Route path='/products/:id/info' element={<Info />} />
+
+                    {/* Search Params */}
                     <Route path='/search' element={<Search />} />
 
-                    {/* Redirecionanmento de Págias */}
+                    {/* Redirect de Págias */}
                     <Route path='/company' element={<Navigate to="/about" />} />  
-                    
+
+                    {/* No Match Route */}
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
@@ -48,3 +59,5 @@ export default App
 //Elementos como o (h1), que estão fora do BrowseRouter, serão repetidos em todas as páginas.
 
 //quando é inserido o ":id" no path, a rota fica dinâmica.
+
+//Nas versões mais antigas do Router, era necessário posicionar a rota dinâmica após o nested, pois caso contrário, apresentava erro.
