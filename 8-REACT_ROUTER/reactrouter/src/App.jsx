@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 //Components
 import Navbar from './components/Navbar'
@@ -28,6 +28,10 @@ function App() {
                     <Route path='/products/:id' element={<Product />} />
                     <Route path='/products/:id/info' element={<Info />} />
                     <Route path='/search' element={<Search />} />
+
+                    {/* Redirecionanmento de Págias */}
+                    <Route path='/company' element={<Navigate to="/about" />} />  
+                    
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
