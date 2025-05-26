@@ -17,13 +17,20 @@ const About = () => {
     const { counter } = useCounterContext()
 
     //Consumindo o contexto mais complexo
-    const { color, border, backgroundColor } = useTitleStyleContext()
+    const { color, border, backgroundColor, fontSize } = useTitleStyleContext()
 
   return (
 
     <div>
         {/* Usando o contesto "color" aqui */}
-        <h1 style={{ color: color, border: border, backgroundColor: backgroundColor}}>Sobre</h1>
+        <h1 style={{ 
+            color: color, 
+            border: border, 
+            backgroundColor: backgroundColor, 
+            fontSize: fontSize
+            }}>
+                Sobre
+        </h1>
 
         {/* Consumindo o contexto */}
         <p>Valor do contador: {counter} </p>

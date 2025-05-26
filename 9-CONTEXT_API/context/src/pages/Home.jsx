@@ -29,7 +29,14 @@ const Home = () => {
     <div>
 
         {/* Usando o contesto "color" aqui */}
-        <h1 style={{ color: color, border: border, backgroundColor: backgroundColor, fontSize: fontSize}}>Home</h1>
+        <h1 style={{ 
+            color: color, 
+            border: border, 
+            backgroundColor: backgroundColor, 
+            fontSize: fontSize
+            }}>
+                Home
+        </h1>
 
         {/* Consumindo o contexto */}
         <p>Valor do contador: {counter} </p>
