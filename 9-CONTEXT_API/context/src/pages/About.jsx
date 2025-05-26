@@ -5,7 +5,7 @@
 import { useCounterContext } from "../hooks/useCounterContext"
 
 //Hook de um context mais complexo
-import { useTitleColorContext } from "../hooks/useTitleColorContext"
+import { useTitleStyleContext } from "../hooks/useTitleStyleContext"
 
 
 const About = () => {
@@ -17,13 +17,13 @@ const About = () => {
     const { counter } = useCounterContext()
 
     //Consumindo o contexto mais complexo
-    const { color } = useTitleColorContext()
+    const { color, border, backgroundColor } = useTitleStyleContext()
 
   return (
 
     <div>
         {/* Usando o contesto "color" aqui */}
-        <h1 style={{ color: color}}>Sobre</h1>
+        <h1 style={{ color: color, border: border, backgroundColor: backgroundColor}}>Sobre</h1>
 
         {/* Consumindo o contexto */}
         <p>Valor do contador: {counter} </p>

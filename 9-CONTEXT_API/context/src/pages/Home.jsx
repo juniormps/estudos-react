@@ -6,7 +6,7 @@ import ChangeCounter from "../components/ChangeCounter"
 import { useCounterContext } from "../hooks/useCounterContext"
 
 //Hook de um context mais complexo
-import { useTitleColorContext } from "../hooks/useTitleColorContext"
+import { useTitleStyleContext } from "../hooks/useTitleStyleContext"
 
 const Home = () => {
 
@@ -17,11 +17,11 @@ const Home = () => {
     const { counter } = useCounterContext()
 
     //Consumo/Alteração do contexto mais complexo
-    const { color, dispatch } = useTitleColorContext()
+    const { color, border, backgroundColor, fontSize, dispatch } = useTitleStyleContext()
 
     //Alterando contexto complexo
-    const setTitleColor = (color) => {
-        dispatch({type: color})
+    const setStyleTitle = (styleTitle) => {
+        dispatch({type: styleTitle})
     }
 
   return (
@@ -29,7 +29,7 @@ const Home = () => {
     <div>
 
         {/* Usando o contesto "color" aqui */}
-        <h1 style={{ color: color}}>Home</h1>
+        <h1 style={{ color: color, border: border, backgroundColor: backgroundColor, fontSize: fontSize}}>Home</h1>
 
         {/* Consumindo o contexto */}
         <p>Valor do contador: {counter} </p>
@@ -39,8 +39,17 @@ const Home = () => {
 
         {/* Alterando o contexto complexo */}
         <div>
-            <button onClick={() => setTitleColor("RED")}>Vermelho</button>
-            <button onClick={() => setTitleColor("BLUE")}>Azul</button>
+            <p>Alterar cor e fundo do título</p>
+            <button onClick={() => setStyleTitle("RED")}>Vermelho</button>
+            <button onClick={() => setStyleTitle("BLUE")}>Azul</button>
+            <button onClick={() => setStyleTitle("RESET_COLOR")}>Default</button>
+        </div>
+
+        <div>
+            <p>Alterar o tamanho do título</p>
+            <button onClick={() => setStyleTitle("GRANDE")}>Grande</button>
+            <button onClick={() => setStyleTitle("EXTRAGRANDE")}>Extragrande</button>
+            <button onClick={() => setStyleTitle("RESET_SIZE")}>Default</button>
         </div>
 
     </div>
