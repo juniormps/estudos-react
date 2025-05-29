@@ -47,6 +47,13 @@ const Navbar = () => {
             <li>
                 <NavLink to={'/about'} className={({isActive}) => (isActive ? styles.active : "")}>Sobre</NavLink>
             </li>
+
+            {user && (
+                <li>
+                    <button onClick={logout}>Sair</button>
+                </li>
+            )}
+
         </ul>
     </nav>
 

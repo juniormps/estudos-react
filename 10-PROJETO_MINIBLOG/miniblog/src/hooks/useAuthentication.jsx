@@ -27,6 +27,8 @@ export const useAuthentication = () => {
         }
     }
 
+    
+    //Register
     const createUser = async (data) => {
         checkIfIsCancelled()
 
@@ -34,6 +36,7 @@ export const useAuthentication = () => {
         setError(null)
 
         try {
+
             const { user } = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
@@ -47,6 +50,7 @@ export const useAuthentication = () => {
             return user
 
         } catch (error) {
+
             console.log(error.message)
             console.log(typeof error.message)
 
@@ -59,7 +63,7 @@ export const useAuthentication = () => {
                 systemErrorMessage = "E-mail já cadastrado.";
 
             } else {
-                systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+                systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
             }
 
             setLoading(false)
@@ -67,6 +71,46 @@ export const useAuthentication = () => {
         }
 
     }
+
+
+    //Logout - Sign Out
+    const logout = () => {
+        checkIfIsCancelled()
+
+        signOut(auth)
+    }
+
+    //Login - Sign in
+    const login = async (data) => {
+        checkIfIsCancelled()
+
+        setLoading(true)
+        setError(false)
+
+        try {
+
+            await signInWithEmailAndPassword(auth, data.email, data.password)
+
+            setLoading(false)
+
+        } catch (error) {
+
+            let systemErrorMessage;
+            console.log(error)
+
+            if (error.message.includes("invalid-credential")) {
+                systemErrorMessage = "Usuário ou senha incorretos"
+
+            } else {
+                systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde"
+
+            }
+
+            setError(systemErrorMessage)
+            setLoading(false)
+        }
+    }
+
 
     useEffect(() => {
         return () => setCancelled(true);
@@ -77,8 +121,8 @@ export const useAuthentication = () => {
     auth,
     createUser,
     error,
-    //logout,
-    //login,
+    logout,
+    login,
     loading
   }
 
