@@ -13,12 +13,14 @@ import { AuthProvider } from './context/AuthContext'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
 import Search from './pages/search/Search'
+import Post from './pages/post/Post'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import CreatePost from './pages/createPost/CreatePost'
 import Dashboard from './pages/dashboard/Dashboard'
+
 
 
 function App() {
@@ -52,6 +54,7 @@ function App() {
                         <Route path='/' element={<Home/>} />
                         <Route path='/about' element={<About/>} />
                         <Route path='/search' element={<Search/>} />
+                        <Route path='/posts/:id' element={<Post/>} />
                         <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
                         <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
                         <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to="/login" />}/>
