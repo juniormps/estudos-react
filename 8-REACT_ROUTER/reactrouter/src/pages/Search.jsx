@@ -5,7 +5,7 @@ import { useApi } from "../hooks/useApi"
 const Search = () => {
     const [searchParams] = useSearchParams()
 
-    const url = "http://localhost:3000/products?" + searchParams
+    const url = "http://localhost:3000/products?" + searchParams  //NÂO pode esquecer do "?" após "products"
 
     const {data: items, loading, error} = useApi(url)
 
