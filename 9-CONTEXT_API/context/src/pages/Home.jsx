@@ -28,7 +28,7 @@ const Home = () => {
 
     <div>
 
-        {/* Usando o contesto "color" aqui */}
+        {/* Usando o contexto "color" aqui */}
         <h1 style={{ 
             color: color, 
             border: border, 
