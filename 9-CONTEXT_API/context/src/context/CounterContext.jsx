@@ -1,4 +1,4 @@
-//Criando um context (contexto)
+//Criando um contexto
 
 import { createContext, useState } from "react"
 
