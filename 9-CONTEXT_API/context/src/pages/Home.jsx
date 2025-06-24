@@ -10,10 +10,10 @@ import { useTitleStyleContext } from "../hooks/useTitleStyleContext"
 
 const Home = () => {
 
-    //Consumindo o contexto
+    //Consumindo o contexto sem utilizar o hook
     //const { counter } = useContext(CounterContext)
 
-    //Consumindo o contexto com o Hook
+    //Consumindo o contexto utilizando o Hook
     const { counter } = useCounterContext()
 
     //Consumo/Alteração do contexto mais complexo
