@@ -13,6 +13,11 @@ const Search = () => {
 
     <div>
         <h1>Resultados disponíveis:</h1>
+
+        {loading && <p>Carregando...</p>}
+        
+        {error && <p>{error}</p>}
+
         <ul className='products'>
             {items && items.map((item) => (
                 <li key={item.id}>
