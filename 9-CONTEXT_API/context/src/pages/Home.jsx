@@ -65,3 +65,20 @@ const Home = () => {
 }
 
 export default Home
+
+
+/*
+ OBSERVAÇÃO:
+    No trecho de código abaixo não é necessário colocar os valores das propriedades, 
+    já que as chaves e os valores têm o mesmo nome.
+
+    <h1 style={{ 
+        color: color, 
+        border: border, 
+        backgroundColor: backgroundColor, 
+        fontSize: fontSize
+        }}>
+            Home
+    </h1>
+
+*/
