@@ -68,12 +68,30 @@ Funcionamento:
         x - é o valor inicial do estado
 
 - useReducer
-    const [state, dispatch] = useReducer(TitleColorReducer, { color: "purple" })
+
+    const titleStyleReducer = (state, action) => {
+    
+        switch (action.type) {
+            case "RED":
+                return {...state, color: "red"}
+            
+            case "BLUE": 
+                return {...state, color: "blue"}
+
+            case "RESET_COLOR": 
+                return {...state, color: "purple"}
+
+            default:
+                return state
+        }
+    }
+
+    const [state, dispatch] = useReducer(exemploReducer, { color: "purple" })
 
     onde:
-        state - é um objeto que contém os estados a serem monitorados
-        dispatch - é a função que altera os estados monitorados
-        titleStyleReducer - um exemplo de uma variável que representa um estado a ser monitorado
-        { color: "purple" } - o valor inicial do estado monitorado (titleStyleReducer)
+        state - é um objeto que contém os estados atuais
+        dispatch - é a função usada para disparar (enviar) ações
+        exemploReducer - é a função que determina como o estado deve mudar
+        { color: "purple" } - o valor inicial do estado
 
 */
