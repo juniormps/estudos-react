@@ -10,8 +10,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 //Hooks do React
 import { useState, useEffect } from 'react'
 
-//Custom Hooks
-import { useAuthentication } from './hooks/useAuthentication'
+//Instância de autenticação
+import { auth } from './firebase/auth'
 
 //Context
 import { AuthProvider } from './context/AuthContext'
@@ -34,7 +34,6 @@ import EditPost from './pages/editPost/EditPost'
 function App() {
 
     const [user, setUser] = useState(undefined)
-    const { auth } = useAuthentication()
 
     const loadingUser = user === undefined
 
