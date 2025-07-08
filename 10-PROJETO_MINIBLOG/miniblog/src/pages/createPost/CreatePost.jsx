@@ -32,10 +32,8 @@ const CreatePost = () => {
 
         }
 
-
         // create tags array
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
-
 
         // check values
         if (!title || !image || !tags || !body) {
@@ -43,7 +41,6 @@ const CreatePost = () => {
             setFormError("Por favor, preencha todos os campos!")
 
         }
-
 
         if (formError) return
 
@@ -55,7 +52,6 @@ const CreatePost = () => {
             uid: user.uid,
             createdBy: user.displayName
         })
-
 
         // redirect to home page
         navigate("/");
