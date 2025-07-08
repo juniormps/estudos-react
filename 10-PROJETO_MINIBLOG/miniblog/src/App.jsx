@@ -13,6 +13,8 @@ import { useState, useEffect } from 'react'
 //Instância de autenticação
 import { auth } from './firebase/auth'
 
+import { useAuthValue } from './context/AuthContext'
+
 //Context
 import { AuthProvider } from './context/AuthContext'
 
@@ -33,25 +35,12 @@ import EditPost from './pages/editPost/EditPost'
 
 function App() {
 
-    const [user, setUser] = useState(undefined)
-
-    const loadingUser = user === undefined
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {   //Obs. 1
-            setUser(user)
-        })
-    }, [auth])
-
-    if (loadingUser) {
-        return <p>Carregando...</p>
-    }
+    const { user } = useAuthValue()
  
-
   return (
     <>
       <div>
-        <AuthProvider value={{user}}>
+        <AuthProvider >
             <BrowserRouter>
 
                 <Navbar/>
