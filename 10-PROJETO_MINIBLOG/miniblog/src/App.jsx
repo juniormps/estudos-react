@@ -1,9 +1,16 @@
+//CSS
 import './App.css'
+
+//React Router
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+//Funções do Firebase
 import { onAuthStateChanged } from 'firebase/auth'
 
-//Hooks
+//Hooks do React
 import { useState, useEffect } from 'react'
+
+//Custom Hooks
 import { useAuthentication } from './hooks/useAuthentication'
 
 //Context
