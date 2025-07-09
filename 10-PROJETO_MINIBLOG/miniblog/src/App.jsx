@@ -60,17 +60,3 @@ function App() {
 }
 
 export default App
-
-
-/*
-Obs. 1: o método  "onAuthStateChanged" do firebase, retorna o user, que é utilizado como parâmetro na função callback dentro dele.
-
-    Sintaxe do método:
-    
-    onAuthStateChanged(auth, (user) => { 
-        ...aqui utiliza o user de alguma forma...
-    })
-
-
-
-*/
