@@ -26,9 +26,7 @@ function App() {
 
     const { user } = useAuthContext()
 
-    const loadingUser = user === undefined
-
-    if (loadingUser) return <p>Carregando...</p>
+    if (!user || user === undefined) return <p>Carregando...</p>
  
   return (
     <>
