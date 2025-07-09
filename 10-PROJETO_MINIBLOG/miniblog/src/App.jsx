@@ -4,19 +4,8 @@ import './App.css'
 //React Router
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-//Funções do Firebase
-import { onAuthStateChanged } from 'firebase/auth'
-
-//Hooks do React
-import { useState, useEffect } from 'react'
-
-//Instância de autenticação
-import { auth } from './firebase/auth'
-
 import { useAuthValue } from './context/AuthContext'
 
-//Context
-import { AuthProvider } from './context/AuthContext'
 
 //Pages
 import Home from './pages/home/Home'
@@ -36,11 +25,14 @@ import EditPost from './pages/editPost/EditPost'
 function App() {
 
     const { user } = useAuthValue()
+
+    const loadingUser = user === undefined
+
+    if (loadingUser) return <p>Carregando...</p>
  
   return (
     <>
       <div>
-        <AuthProvider >
             <BrowserRouter>
 
                 <Navbar/>
@@ -62,7 +54,6 @@ function App() {
                 <Footer/>
                 
             </BrowserRouter>
-        </AuthProvider>
       </div>
     </>
   )
