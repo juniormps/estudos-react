@@ -2,14 +2,14 @@ import styles from './Dashboard.module.css'
 import { Link } from 'react-router-dom'
 
 //Hooks
-import { useAuthValue } from "../../context/AuthContext"
+import { useAuthContext } from "../../context/authContext/useAuthContext"
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 import { useDeleteDocument } from "../../hooks/useDeleteDocument"
 
 
 const Dashboard = () => {
 
-    const { user } = useAuthValue()
+    const { user } = useAuthContext()
     const uid = user.uid
 
     const { documents: posts, loading } = useFetchDocuments("posts", null, uid)

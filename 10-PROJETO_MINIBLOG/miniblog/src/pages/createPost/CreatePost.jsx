@@ -3,7 +3,7 @@ import styles from './CreatePost.module.css'
 import { useState } from "react"
 import { useInsertDocument } from "../../hooks/useInsertDocument"
 import { useNavigate } from "react-router-dom"
-import { useAuthValue } from "../../context/AuthContext"
+import { useAuthContext } from "../../context/authContext/useAuthContext"
 
 
 const CreatePost = () => {
@@ -14,7 +14,7 @@ const CreatePost = () => {
     const [tags, setTags] = useState([])
     const [formError, setFormError] = useState("")
 
-    const { user } = useAuthValue()
+    const { user } = useAuthContext()
 
     const { insertDocument, response } = useInsertDocument("posts")
 

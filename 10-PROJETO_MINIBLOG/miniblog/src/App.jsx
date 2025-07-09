@@ -4,7 +4,7 @@ import './App.css'
 //React Router
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-import { useAuthValue } from './context/AuthContext'
+import { useAuthContext } from './context/authContext/useAuthContext' 
 
 
 //Pages
@@ -24,7 +24,7 @@ import EditPost from './pages/editPost/EditPost'
 
 function App() {
 
-    const { user } = useAuthValue()
+    const { user } = useAuthContext()
 
     const loadingUser = user === undefined
 

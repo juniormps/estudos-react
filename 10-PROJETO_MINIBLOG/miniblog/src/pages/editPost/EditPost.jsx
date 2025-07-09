@@ -3,7 +3,7 @@ import styles from './EditPost.module.css'
 import { useState, useEffect } from "react"
 import { useUpdateDocument } from "../../hooks/useUpdateDocument"
 import { useNavigate, useParams } from "react-router-dom"
-import { useAuthValue } from "../../context/AuthContext"
+import { useAuthContext } from "../../context/authContext/useAuthContext"
 import { useFetchDocument } from '../../hooks/useFetchDocument'
 
 
@@ -36,7 +36,7 @@ const EditPost = () => {
 
 
 
-    const { user } = useAuthValue()
+    const { user } = useAuthContext()
 
     const { updateDocument, response } = useUpdateDocument("posts")
 
