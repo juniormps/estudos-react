@@ -1,8 +1,8 @@
 import styles from './CreatePost.module.css'
 
 import { useState } from "react"
-import { useInsertDocument } from "../../hooks/useInsertDocument"
 import { useNavigate } from "react-router-dom"
+import { useInsertDocument } from "../../hooks/useInsertDocument"
 import { useAuthContext } from "../../context/authContext/useAuthContext"
 
 
@@ -16,6 +16,8 @@ const CreatePost = () => {
 
     const { user } = useAuthContext()
 
+    //console.log(user)
+
     const { insertDocument, response } = useInsertDocument("posts")
 
     const navigate = useNavigate()
@@ -23,7 +25,7 @@ const CreatePost = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // validate image
+        // valida se a imagem é uma URL
         try {
             new URL(image)
 
@@ -37,12 +39,14 @@ const CreatePost = () => {
 
         // check values
         if (!title || !image || !tags || !body) {
-
             setFormError("Por favor, preencha todos os campos!")
 
         }
 
-        if (formError) return
+        if (formError) {
+            return
+            
+        } 
 
         insertDocument({
             title,
