@@ -11,16 +11,15 @@ const CreatePost = () => {
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
     const [body, setBody] = useState("")
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState("")
     const [formError, setFormError] = useState("")
 
     const { user } = useAuthContext()
-
-    //console.log(user)
-
-    const { insertDocument, response } = useInsertDocument("posts")
-
     const navigate = useNavigate()
+
+    const { insertDocument, loading, error } = useInsertDocument("posts")
+
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -30,23 +29,23 @@ const CreatePost = () => {
             new URL(image)
 
         } catch (error) {
-            setFormError("A imagem precisa ser uma URL.")
-
+            setFormError("A imagem precisa ser uma URL válida.")
+            return
         }
-
-        // create tags array
-        const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
 
         // check values
         if (!title || !image || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!")
-
+            return
         }
 
         if (formError) {
             return
             
         } 
+
+        // create tags array
+        const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
 
         insertDocument({
             title,
@@ -58,7 +57,7 @@ const CreatePost = () => {
         })
 
         // redirect to home page
-        navigate("/");
+        if (!error) navigate("/");
 
     }
 
@@ -120,10 +119,10 @@ const CreatePost = () => {
                 />
             </label>
 
-            {!response.loading && <button className='btn'>Cadastrar</button>}
-            {response.loading && <button className='btn' disabled>Aguarde...</button>}
+            {!loading && <button className='btn'>Cadastrar</button>}
+            {loading && <button className='btn' disabled>Aguarde...</button>}
 
-            {response.error && <p className="error">{response.error}</p>}
+            {error && <p className="error">{error}</p>}
             {formError && <p className="error">{formError}</p>}
             
         </form>
