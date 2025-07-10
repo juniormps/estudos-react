@@ -24,9 +24,9 @@ import EditPost from './pages/editPost/EditPost'
 
 function App() {
 
-    const { user } = useAuthContext()
+    const { user, loading } = useAuthContext()
 
-    if (!user || user === undefined) return <p>Carregando...</p>
+    if (loading) return <p>Carregando...</p>
  
   return (
     <>
