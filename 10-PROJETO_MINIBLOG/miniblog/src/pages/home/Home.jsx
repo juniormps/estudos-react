@@ -2,46 +2,24 @@
 import styles from "./Home.module.css"
 
 //Hooks
-import { useNavigate, Link } from 'react-router-dom'
-import { useState } from "react"
+import { Link } from 'react-router-dom'
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 
 //Components
 import PostDetail from "../../components/PostDetail"
+import SearchBar from "../../components/SearchBar"
 
 
 const Home = () => {
 
-    const [query, setQuery] = useState("")
     const { documents: posts, loading } = useFetchDocuments("posts")
-
-    const navigate = useNavigate()
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        if (query) {
-            return navigate(`/search?q=${query}`)
-        }
-    }
     
-
   return (
 
     <div className={styles.home}>
         <h1>Veja os nossos posts mais recentes</h1>
 
-        <form className={styles.search_form} onSubmit={handleSubmit}>
-
-            <input 
-                type="text"
-                placeholder="Ou busque por tags..."
-                onChange={(e) => setQuery(e.target.value)}
-            />
-            
-            <button className="btn btn-dark">Pesquisar</button>
-
-        </form>
+        <SearchBar />
 
         <div>
             {loading && <p>Carregando...</p> }
