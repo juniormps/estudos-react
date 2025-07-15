@@ -20,12 +20,13 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
             setLoading(true)
 
+            //Pega a coleção que está no db
             const collectionRef = collection(db, docCollection)
 
             try {
-                
                 let q 
 
+                //Monta as consultas
                 if (search) {               //busca
                     q = query(
                         collectionRef, 
@@ -47,6 +48,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                     )
                 }
 
+                //Faz a consulta e retorna os docs encontrados
                 onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({
@@ -56,20 +58,17 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                     )
                 })
 
-                setLoading(false)
-
             } catch (error) {
 
                 console.log(error)
-                setError(error.message)
-
-                setLoading(false)
+                setError(error.message)  
                 
+            } finally {
+                setLoading(false)
+
             }
 
-
         }
-
 
         loadData()
 
