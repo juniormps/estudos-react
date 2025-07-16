@@ -55,7 +55,6 @@ const Dashboard = () => {
                     <button onClick={() => deleteDocument(post.id)} className="btn btn-outline btn-danger">
                         Excluir
                     </button>
-
                 </div>
             </div>
         ))}
