@@ -1,3 +1,5 @@
+//Hook utilizado para buscar e fornecer um post em específico para a página Post (que mostra cada post individualmente)
+
 import { useState, useEffect } from "react"
 import { db } from "../firebase/firestore"
 import { doc, getDoc } from "firebase/firestore"
