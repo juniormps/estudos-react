@@ -12,9 +12,9 @@ export const useDeleteDocument = (docCollection) => {
     const isCancelled = useRef(false)
 
     /*
-    Trecho comentado pelo seguinte motivo: o componente Dashboard está sendo montado e desmontado imediatamente após o carregamento por conta do StrictMode no main.jsx. Isso faz com que a flag "isCancelled.current" receba o valor "true" logo no início da execução de deleteDocument, fazendo com que a exclusão seja cancelada antes mesmo de tentar executar.
+    Trecho comentado pelo seguinte motivo: o componente Dashboard está sendo montado e desmontado imediatamente após o carregamento por conta do StrictMode no main.jsx. Isso faz com que a flag "isCancelled.current" receba o valor "true" logo no início da execução de deleteDocument, fazendo com que a exclusão de post seja cancelada antes mesmo de tentar executar.
     Obs.: em produção, o trecho deve ser descomentado.
-    
+
     useEffect(() => {
         return () => {
             console.log("Hook desmontado")
