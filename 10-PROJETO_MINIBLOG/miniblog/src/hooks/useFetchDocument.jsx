@@ -23,17 +23,16 @@ export const useFetchDocument = (docCollection, id) => {
             setLoading(true)
 
             try {
-                const docRef = await doc(db, docCollection, id)
+                const docRef = doc(db, docCollection, id)
                 const docSnap = await getDoc(docRef)
 
                 setDocument(docSnap.data())
 
-                setLoading(false)
-
             } catch (error) {
                 console.log(error)
                 setError(error.message)
-                
+           
+            } finally {
                 setLoading(false)
             }
 
