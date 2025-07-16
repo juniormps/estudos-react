@@ -1,5 +1,6 @@
 import styles from './Dashboard.module.css'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 //Hooks
 import { useAuthContext } from "../../context/authContext/useAuthContext"
@@ -15,6 +16,10 @@ const Dashboard = () => {
     const { documents: posts, loading } = useFetchDocuments("posts", null, uid)
 
     const { deleteDocument } = useDeleteDocument("posts")
+
+    useEffect(() => {
+        console.log("Dashboard montado")
+    }, [])
     
 
     if (loading) {
@@ -52,7 +57,7 @@ const Dashboard = () => {
 
                     <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">Editar</Link>
 
-                    <button onClick={() => deleteDocument(post.id)} className="btn btn-outline btn-danger">
+                    <button onClick={() => {console.log("Tentando excluir post:", post.id); deleteDocument(post.id)}} className="btn btn-outline btn-danger">
                         Excluir
                     </button>
                 </div>
