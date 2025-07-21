@@ -1,3 +1,5 @@
+//Contexto de autenticação
+
 import { useState, useEffect, createContext } from 'react'
 import { auth } from '../../firebase/auth'
 import { onAuthStateChanged } from 'firebase/auth'
