@@ -47,10 +47,8 @@ const EditPost = () => {
         // validate image
         try {
             new URL(image)
-
         } catch (error) {
             setFormError("A imagem precisa ser uma URL.")
-
         }
 
         // create tags array
@@ -58,12 +56,12 @@ const EditPost = () => {
 
         // check values
         if (!title || !image || !tags || !body) {
-
             setFormError("Por favor, preencha todos os campos!")
-
         }
 
-        if (formError) return
+        if (formError) {
+            return
+        }
 
         const data = {
             title,
@@ -78,7 +76,6 @@ const EditPost = () => {
 
         // redirect to home page
         navigate("/dashboard");
-        
     }
 
     
