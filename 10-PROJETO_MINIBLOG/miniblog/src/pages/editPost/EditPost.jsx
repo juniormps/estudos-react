@@ -15,7 +15,7 @@ const EditPost = () => {
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
     const [body, setBody] = useState("")
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState("")
     const [formError, setFormError] = useState("")
 
 
@@ -33,7 +33,6 @@ const EditPost = () => {
         }
 
     }, [post]);
-
 
 
     const { user } = useAuthContext()
@@ -54,10 +53,8 @@ const EditPost = () => {
 
         }
 
-
         // create tags array
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
-
 
         // check values
         if (!title || !image || !tags || !body) {
@@ -65,7 +62,6 @@ const EditPost = () => {
             setFormError("Por favor, preencha todos os campos!")
 
         }
-
 
         if (formError) return
 
@@ -85,8 +81,7 @@ const EditPost = () => {
         
     }
 
-
-
+    
   return (
 
     <div className={styles.edit_post}>
