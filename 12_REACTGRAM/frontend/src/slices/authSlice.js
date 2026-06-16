@@ -26,21 +26,27 @@ export const register = createAsyncThunk(
 );
 
 // Logout a user
-export const logout = createAsyncThunk("auth/logout", async () => {
-    await authService.logout();
-});
+export const logout = createAsyncThunk(
+    "auth/logout", 
+    async () => {
+        await authService.logout();
+    }
+);
 
 // Sing in a user
-export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
-    const data = await authService.login(user);
+export const login = createAsyncThunk(
+    "auth/login", 
+    async (user, thunkAPI) => {
+        const data = await authService.login(user);
 
-    // Check for errors
-    if (data.errors) {
-        return thunkAPI.rejectWithValue(data.errors[0]);
+        // Check for errors
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0]);
+        }
+
+        return data;
     }
-
-    return data;
-});
+);
 
 export const authSlice = createSlice({
     name: "auth",
